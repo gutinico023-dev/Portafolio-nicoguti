@@ -1,36 +1,100 @@
-# Portafolio-nicoguti
+# Portafolio de Nicolás Gutiérrez
 
-Portafolio académico de Nicolás Gutiérrez para la asignatura Arquitectura de Software de la UCEVA. La aplicación principal está desarrollada con Angular y presenta cinco proyectos independientes con sus enlaces de código y publicación.
+Portafolio académico desarrollado para la asignatura Arquitectura de Software de la Unidad Central del Valle del Cauca (UCEVA). Reúne cinco proyectos independientes y sus respectivas publicaciones en GitHub Pages.
 
-## Proyectos
+[![Deploy Angular to GitHub Pages](https://github.com/gutinico023-dev/Portafolio-nicoguti/actions/workflows/pipeline.yml/badge.svg?branch=develop)](https://github.com/gutinico023-dev/Portafolio-nicoguti/actions/workflows/pipeline.yml)
 
-| Proyecto | Tecnología principal | Repositorio | Publicación prevista |
+## Información del estudiante
+
+- Nombre: Nicolás Gutiérrez Escudero
+- Código: 230231029
+- Modalidad: trabajo individual
+- Repositorio: [github.com/gutinico023-dev/Portafolio-nicoguti](https://github.com/gutinico023-dev/Portafolio-nicoguti)
+- Sitio publicado: [gutinico023-dev.github.io/Portafolio-nicoguti](https://gutinico023-dev.github.io/Portafolio-nicoguti/)
+
+## Proyectos presentados
+
+| Proyecto | Tecnologías | Código | Demo |
 | --- | --- | --- | --- |
-| Portafolio digital | Angular | [GitHub](https://github.com/gutinico023-dev/Portafolio-nicoguti) | [GitHub Pages](https://gutinico023-dev.github.io/Portafolio-nicoguti/) |
-| Client-Server | Angular + Node.js | [GitHub](https://github.com/gutinico023-dev/Guti-Uceva-Angular-NodeJS-Taller-Client-Server) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Angular-NodeJS-Taller-Client-Server/) |
-| Angular Modules | Angular + NgModules | [GitHub](https://github.com/gutinico023-dev/Uceva-Angular-Taller-Modules) | [GitHub Pages](https://gutinico023-dev.github.io/Uceva-Angular-Taller-Modules/) |
-| Design System | Angular + Bootstrap | [GitHub](https://github.com/gutinico023-dev/Guti-Uceva-Angular-Taller-Design-System) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Angular-Taller-Design-System/) |
-| Astro SSG SPA | Astro + TypeScript | [GitHub](https://github.com/gutinico023-dev/Guti-Uceva-Astro-Angular-SSG-SPA) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Astro-Angular-SSG-SPA/) |
+| Portafolio digital | Angular, TypeScript, SCSS | [Repositorio](https://github.com/gutinico023-dev/Portafolio-nicoguti) | [GitHub Pages](https://gutinico023-dev.github.io/Portafolio-nicoguti/) |
+| Client-Server | Angular, Node.js, Jest | [Repositorio](https://github.com/gutinico023-dev/Guti-Uceva-Angular-NodeJS-Taller-Client-Server) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Angular-NodeJS-Taller-Client-Server/) |
+| Angular Modules | Angular, NgModules, RxJS | [Repositorio](https://github.com/gutinico023-dev/Uceva-Angular-Taller-Modules) | [GitHub Pages](https://gutinico023-dev.github.io/Uceva-Angular-Taller-Modules/) |
+| Design System | Angular, Bootstrap, ng-packagr | [Repositorio](https://github.com/gutinico023-dev/Guti-Uceva-Angular-Taller-Design-System) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Angular-Taller-Design-System/) |
+| Astro SSG SPA | Astro, TypeScript, Bootstrap | [Repositorio](https://github.com/gutinico023-dev/Guti-Uceva-Astro-Angular-SSG-SPA) | [GitHub Pages](https://gutinico023-dev.github.io/Guti-Uceva-Astro-Angular-SSG-SPA/) |
 
-Las URLs de Pages son las previstas por el enunciado; su disponibilidad depende de habilitar Pages y ejecutar los workflows en GitHub.
+## Stack del portafolio
 
-## Desarrollo local
+- Angular 20 con componentes standalone.
+- TypeScript 5.9.
+- SCSS para estilos y diseño responsive.
+- Angular CLI para desarrollo y compilación.
+- GitHub Actions y GitHub Pages para integración y despliegue continuo.
+
+La información de los proyectos se mantiene en el componente principal y se presenta mediante tarjetas reutilizables. Cada tarjeta enlaza al repositorio fuente y a su demo publicada.
+
+## Ejecutar localmente
+
+Requisitos: Node.js y npm instalados.
 
 ```bash
 npm ci
 npm start
 ```
 
-Para validar el build con el subpath de GitHub Pages:
+La aplicación estará disponible en `http://localhost:4200/`.
+
+## Comandos disponibles
 
 ```bash
+# Servidor de desarrollo
+npm start
+
+# Compilación de producción
+npm run build
+
+# Compilación usando el subpath de GitHub Pages
 npm run build -- --base-href "/Portafolio-nicoguti/"
+
+# Pruebas unitarias en modo interactivo
+npm test
+
+# Pruebas unitarias sin interfaz gráfica
+npm test -- --no-watch --no-progress --browsers=ChromeHeadless
 ```
 
-## CI/CD
+## Integración y despliegue continuo
 
-El workflow ejecutable está en `.github/workflows/pipeline.yml` y se replica en `pipeline.yml` para mantener la configuración visible en la raíz. El despliegue se activa solo con `push` a `develop` o manualmente mediante `workflow_dispatch`.
+El workflow [`pipeline.yml`](.github/workflows/pipeline.yml) se ejecuta cuando hay un `push` a la rama `develop` o cuando se inicia manualmente desde GitHub Actions.
 
-Los cuatro repositorios adicionales viven en `projects/` como repositorios Git independientes. `projects/` está excluido localmente mediante `.git/info/exclude`; no se agregan sus fuentes ni sus `.git` al índice del portafolio principal.
+El pipeline realiza las siguientes tareas:
 
-Antes del primer despliegue, revisa en cada repositorio `Settings > Pages` que la fuente de publicación sea `GitHub Actions` y que el entorno `github-pages` tenga los permisos de Pages habilitados. No se hicieron cambios remotos desde este entorno.
+1. Instala las dependencias con `npm ci`.
+2. Ejecuta las pruebas unitarias en Chrome Headless.
+3. Compila la aplicación con el `base-href` del repositorio.
+4. Genera `404.html` a partir de `index.html` para soportar las rutas de GitHub Pages.
+5. Sube el artefacto estático y lo publica en el entorno `github-pages`.
+
+La configuración de Pages debe utilizar GitHub Actions como fuente de publicación. La URL resultante es:
+
+<https://gutinico023-dev.github.io/Portafolio-nicoguti/>
+
+## Estructura principal
+
+```text
+src/
+├── app/
+│   ├── app.ts          # Datos de los proyectos y lógica del componente raíz
+│   ├── app.html        # Estructura de la página
+│   ├── app.scss        # Estilos del portafolio
+│   └── app.routes.ts   # Configuración de rutas
+├── index.html
+└── main.ts
+.github/workflows/pipeline.yml
+angular.json
+package.json
+pipeline.yml
+```
+
+## Licencia
+
+Proyecto académico de uso educativo. Todos los proyectos enlazados pertenecen a su repositorio correspondiente.
