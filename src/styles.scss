@@ -1,0 +1,5 @@
+:root { --ink: #24212b; --muted: #77717b; --line: #ded8d2; --accent: #9c83e3; --accent-dark: #7652bd; --display: 'Space Grotesk', 'Segoe UI', sans-serif; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: #fdfbf8; color: var(--ink); font-family: 'DM Sans', 'Segoe UI', sans-serif; margin: 0; }
+button, a { -webkit-tap-highlight-color: transparent; }
